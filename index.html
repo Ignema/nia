@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Nia</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css" />
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
+    <script src="https://unpkg.com/plyr@3"></script>
+    <script defer src="static/js/suggestion.js"></script>
+    <script defer src="static/js/player.js"></script>
+    <script defer src="static/js/dialog.js"></script>
+  </head>
+  <body>
+    <div class="title">
+      <img class="title-img" src="static/img/title-transparent.png" alt="The Word Nia">
+      <p class="credits">By Yassir Douslimi</p>
+    </div>
+    <div class="controls"> <!-- Search elements -->
+      <input id="anime-search" aria-label="anime-search" type="text">
+      <button id="anime-play">Play</button>
+    </div>
+    <div class="watch">
+      <video id="anime-video" src="https://v.animethemes.moe/MushokuTenseiS2-OP1.webm" controls></video> <!-- Video element -->
+      <div class="suggestions"> <!-- Suggestions elements -->
+        <p class="suggestions-title">Suggestions</button>
+        <li class="suggestion" id="suggestion-1"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-2"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-3"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-4"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-5"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <button class="refresh" type="button" onclick="refreshSuggestions()">Refresh</button>
+      </div>
+    </div>
+    <!-- dialog elements -->
+    <div id="dialog-container">
+      <dialog id="dialog">
+        <form id="themes-form">
+          <p>Choose a theme:</p>
+          <div id="themes-container"></div>
+          <br>
+          <button type="submit">Apply</button>
+          <button type="button" onclick="closeDialog()">Cancel</button>
+        </form>
+      </dialog>
+      <div id="dialog-backdrop"></div>
+    </div>
+    <p class="bg-splash bg-splash-1">Yo</p>
+    <p class="bg-splash bg-splash-2">yo</p>
+  </body>
+</html>
