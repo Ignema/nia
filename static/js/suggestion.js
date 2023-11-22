@@ -1,14 +1,3 @@
-const fetchRandomAnime = async () => {
-    try {
-        const res = await fetch('https://api.jikan.moe/v4/recommendations/anime')
-        const json = await res.json()
-        const anime = json.data[Math.floor(Math.random()*json.data.length)]
-        return anime.entry[Math.floor(Math.random()*anime.entry.length)]
-    } catch (error) {
-        return null
-    }
-}
-
 const tracker = {} // track added event listeners
 const history = [] // track added titles
 
@@ -19,15 +8,34 @@ const triggerSuggestion = (suggestion) => {
 
 const refreshSuggestions = async () => {
     // Loop over each suggestion HTML element
-    for(let suggestion of document.getElementsByClassName("suggestion")) {
+    await Promise.all([...document.getElementsByClassName("suggestion")].map(async (suggestion) => {
+        // Reset suggestion element
+        suggestion.querySelector(".suggestion-title").innerHTML = "Loading..."
+        suggestion.querySelector(".suggestion-img").src = "static/img/spinner.svg"
+
+
         // Get random anime
         let anime = null
-        do anime = await fetchRandomAnime() 
-        while (anime == null || history.includes(anime.title))
+        let themes = null
+        do {
+            anime = await fetchRandomAnime() 
+            themes = await getThemes(anime.title, 1)
+        } while (
+            anime == null 
+            || history.includes(anime.title) 
+            || themes == null 
+            || themes.length === 0
+        )
 
         // Setup suggestion elements with data
         suggestion.querySelector(".suggestion-title").innerHTML = anime.title
         suggestion.querySelector(".suggestion-img").src = anime.images.jpg.image_url
+
+        // Animate suggestion element
+        suggestion.classList.add("grow-animation")
+        suggestion.addEventListener( "animationend",  () => {
+            suggestion.classList.remove("grow-animation");    
+        });
         
         // Remove already declared listeners
         if(suggestion.id in tracker)  suggestion.removeEventListener("click", tracker[suggestion.id]) 
@@ -37,7 +45,7 @@ const refreshSuggestions = async () => {
         suggestion.addEventListener("click", listener) // Add listener to suggestion element
 
         history.push(anime.title) // Record added title
-    }
+    }))
 }
 
 refreshSuggestions()

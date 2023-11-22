@@ -7,13 +7,18 @@
     <meta name="title" property="og:title" content="Nia" />
     <meta name="type" property="og:type" content="website" />
     <meta name="image" property="og:image" content="https://ignema.github.io/nia/static/img/title.jpeg" />
-    <meta name="url" property="og:url" content="https://ignema.github.io/nia" />
+    <meta name="url" property="og:url" content="https://github.com/Ignema/nia" />
     <meta name="description" property="og:description" content="Lightweight UI for streaming anime openings/endings" />
+    <meta name="twitter:title" content="Nia" />
+    <meta name="twitter:image" content="https://ignema.github.io/nia/static/img/title.jpeg" />
+    <meta name="twitter:description" content="Lightweight UI for streaming anime openings/endings" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css" />
     <link rel="stylesheet" href="static/css/style.css">
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
     <script src="https://unpkg.com/plyr@3"></script>
+    <script defer src="static/js/themes.js"></script>
+    <script defer src="static/js/jikan.js"></script>
     <script defer src="static/js/suggestion.js"></script>
     <script defer src="static/js/player.js"></script>
     <script defer src="static/js/dialog.js"></script>
@@ -24,7 +29,7 @@
       <p class="credits">By Yassir Douslimi</p>
     </div>
     <div class="controls"> <!-- Search elements -->
-      <input id="anime-search" aria-label="anime-search" type="text">
+      <input id="anime-search" aria-label="anime-search" placeholder="Type an anime title to start searching..." type="text">
       <button id="anime-play">Play</button>
     </div>
     <div class="watch">
@@ -36,6 +41,13 @@
         <li class="suggestion" id="suggestion-3"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
         <li class="suggestion" id="suggestion-4"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
         <li class="suggestion" id="suggestion-5"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-6"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-7"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-8"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-9"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-10"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-11"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
+        <li class="suggestion" id="suggestion-12"><img class="suggestion-img"><p class="suggestion-title">Pending</p></li>
         <button class="refresh" type="button" onclick="refreshSuggestions()">Refresh</button>
       </div>
     </div>

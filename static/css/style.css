@@ -4,7 +4,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgb(29 42 65);
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -53,13 +52,12 @@ body {
 }
 
 #anime-search {
-    width: 50vw;
+    width: 45vw;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     font-family: monospace;
-    font-size: 16px;
     transition: border-color 0.3s ease-in-out;
     margin-bottom: 3rem;
 }
@@ -137,7 +135,7 @@ button {
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out;
-    background-color: #5784a1;
+    background-color: #5784a173;
     color: #fff;
   }
   
@@ -154,11 +152,12 @@ button:active {
     right: 0;
     bottom: 0;
     margin: 0.5rem;
+    padding: 8px 8px;
 }
   
 .plyr {
     aspect-ratio: 16 / 9;
-    max-height: 40%;
+    width: 80%;
     margin: 0 5rem;
     border-radius: 20px;
     box-shadow: 0px 0px 10px 0px #00000090;
@@ -175,11 +174,10 @@ button:active {
     background-color: #29374d;
     padding: 3rem;
     border-radius: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 3rem;
+    margin: 3rem 0;
     position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr)
 }
 
 .suggestions-title {
@@ -199,17 +197,24 @@ button:active {
     justify-content: space-around;
     align-items: center;
     margin: 1rem 0;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.suggestion:hover {
+    transform: scale(.98);
+}
+
+.suggestion:active {
+    transform: scale(.92);
 }
 
 .suggestion-img {
-    background-color: white;
     height: 12rem;
     border-radius: 10px;
     box-shadow: 1px 2px 11px 0 #0000007d;
     opacity: .8;
     transition: .3s all ease-in-out;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .suggestion-img:hover {
@@ -244,18 +249,37 @@ button:active {
     transform: translate(-75%, -115%) rotate(180deg);
 }
 
-@media only screen and (min-width: 600px) and (max-width: 1000px) {
-    .suggestions {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+.grow-animation {
+    opacity: 1;
+    animation: grow .3s ease-in-out;
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0);
+    } to {
+        transform: scale(1);
     }
 }
 
+@media only screen and (max-width: 1200px) {
+    .suggestions {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+    }
+}
 
+@media only screen and (max-width: 1000px) {
+    .suggestions {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+}
 
 @media only screen and (max-width: 600px) {
     .plyr {
         height: 50vw;
+        margin: 0;
     }
 
     .suggestions {
@@ -266,5 +290,24 @@ button:active {
 
     .suggestion-img {
         height: 20rem;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .plyr {
+        margin: 0;
+    }
+
+    .suggestions {
+        padding: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .suggestion-img {
+        height: 15rem;
+    }
+
+    .refresh {
+        bottom: 3px;
     }
 }

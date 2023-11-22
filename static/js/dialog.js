@@ -25,25 +25,10 @@ const closeDialog = () => {
     dialog.close();
 }
 
-// const saveSelection = (anime, theme) => {
-//     const old = localStorage.getItem(anime)
-//     if(old == null) return
-//     const themes = old.split(",")
-//     let already = false
-//     for(let t of themes) {
-//         if(t === theme) already = true
-//     }
-//     if(!already) {
-//         themes.push(theme)
-//         localStorage.setItem(anime, themes)
-//     }
-// }
-
 const submitForm = e => {
     e.preventDefault();
     const formData = new FormData(form);
     const selectedOption = formData.get('choice');
-    // saveSelection(search.value, selectedOption)
     video.src = selectedOption
     video.load()
     closeDialog();
