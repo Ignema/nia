@@ -1,2 +1,2 @@
-# nia 🕶️
-Lightweight UI for streaming anime openings/endings
+# **Nia** ✨
+> Lightweight UI for streaming anime openings/endings
