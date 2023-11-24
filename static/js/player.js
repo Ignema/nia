@@ -11,7 +11,7 @@ play.addEventListener("click", () => {
     if(search.value === "") {
         alert("You didn't provide any value for search!")
     } else {
-        processThemes(search.value, themes =>  openDialog(themes), 100)
+        processThemes(search.value, themes => openDialog(themes), 100)
     }
 })
 
@@ -20,11 +20,10 @@ if(params.has("q")) {
     search.value = params.get("q")
     play.click()
     if(params.has("t")) {
-        const selector = `#themes-container > label:nth-child(${params.get("t") == 1 ? 1 : parseInt(params.get("t"))+1}) > input[type=radio]`
+        const selector = `#themes-container > label:nth-child(${parseInt(params.get("t"))*2-1}) > input[type=radio]`
         waitUntilElementExists(selector, radio => {
             radio.click()
             document.querySelector(`#themes-form > button[type="submit"]`).click()
-
             const interact = document.querySelector(`.page-interact`)
             const p = document.querySelector(`.page-interact > p`)
             p.innerHTML = `Loading...`
