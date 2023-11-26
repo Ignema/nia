@@ -1,8 +1,9 @@
 const tracker = {} // track added event listeners
-const history = [] // track added titles
+const old = [] // track added titles
 
 const triggerSuggestion = (suggestion) => {
     search.value = suggestion
+    if(search.value!="") clear.style.display = "block"
     play.click()
 }
 
@@ -13,7 +14,6 @@ const refreshSuggestions = async () => {
         suggestion.querySelector(".suggestion-title").innerHTML = "Loading..."
         suggestion.querySelector(".suggestion-img").src = "static/img/spinner.svg"
 
-
         // Get random anime
         let anime = null
         let themes = null
@@ -22,7 +22,7 @@ const refreshSuggestions = async () => {
             themes = await getThemes(anime.title, 1)
         } while (
             anime == null 
-            || history.includes(anime.title) 
+            || old.includes(anime.title) 
             || themes == null 
             || themes.length === 0
         )
@@ -44,8 +44,9 @@ const refreshSuggestions = async () => {
         tracker[suggestion.id] = listener // Record listener reference to remove in future refresh
         suggestion.addEventListener("click", listener) // Add listener to suggestion element
 
-        history.push(anime.title) // Record added title
+        old.push(anime.title) // Record added title
     }))
 }
 
+localStorage.removeItem("JIKAN_RANDOM_ANIME_RESPONSE") // Clear random anime cache
 refreshSuggestions()

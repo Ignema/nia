@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-body {
+* {
     margin: 0;
     padding: 0;
+}
+
+body {
     background-color: rgb(29 42 65);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
 }
 
 ::-webkit-scrollbar {
@@ -27,6 +26,181 @@ body {
     background: rgb(189, 189, 189);
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#sidebar, #history {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    background-color: #23282f;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    z-index: 100;
+    animation: slideRight .5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: scroll;
+}
+
+#sidebar {
+    width: 20rem;
+}
+
+#history {
+    width: 25rem;
+}
+
+#sidebar-close, #history-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-family: cursive;
+    color: white;
+    font-size: 20px;
+    opacity: .7;
+    cursor: pointer;
+}
+
+#sidebar-title, #history-title {
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+#sidebar > hr, #history > hr {
+    margin: 1rem 0;
+    width: 40%;
+}
+
+#sidebar-image {
+    width: 16rem;
+    border-radius: 20px;
+}
+
+#sidebar-anime {
+    font-family: 'Montserrat';
+    color: white;
+    margin: 1rem 1rem 0 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+#sidebar-synopsis {
+    color: #c1c8d1;
+    font-size: 15px;
+    font-family: system-ui;
+    margin: 1rem;
+}
+
+#anime-info {
+    position: absolute;
+    top: 90px;
+    right: 30px;
+    background-color: #728197;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    opacity: .8;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+}
+
+#anime-info:active {
+    transform: scale(0.95);
+}
+
+#anime-history {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background-color: #5784a1;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    opacity: .8;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+}
+
+#anime-history:active {
+    transform: scale(0.95);
+}
+
+#history ul {
+    width: 100%;
+}
+
+#history li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1f25;
+    margin: 1rem;
+    border-radius: 20px;
+    opacity: .7;
+    box-shadow: 0 0 14px 0 #ffffff14;
+}
+
+#history li:hover {
+    transform: scale(.98);
+}
+
+.history-del {
+    font-family: cursive;
+    color: white;
+    font-size: 20px;
+    opacity: .7;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.history-item {
+    cursor: pointer;
+}
+
+.history-item > p:nth-child(1) {
+    font-family: Montserrat;
+    font-weight: bolder;
+    color: white;
+    text-wrap: pretty;
+    text-align: center;
+}
+
+.history-item > p:nth-child(2) {
+    font-family: Montserrat;
+    color: #728197;
+    font-size: 10px;
+    text-align: center;
+}
+
+.history-img {
+    height: 5rem;
+    border-radius: 0 20px 20px 0;
+}
+
 .title {
     position: relative;
 }
@@ -41,7 +215,7 @@ body {
     font-family: 'Montserrat';
     font-size: 8px;
     font-weight: bold;
-    bottom: 26px;
+    bottom: 33px;
     left: 45px;
     transition: all .2s ease-in-out;
     cursor: default;
@@ -49,6 +223,10 @@ body {
 
 .credits:hover {
     text-shadow: 0 0 7px #fff;
+}
+
+.controls {
+    position: relative;
 }
 
 #anime-search {
@@ -67,6 +245,18 @@ body {
     outline: none;
 }
 
+#anime-search-clear {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 90px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #a3a0a0;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+}
+
 #dialog-container {
     position: relative;
 }
@@ -74,11 +264,14 @@ body {
 #dialog {
     position: fixed;
     padding: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     background-color: #497089;
     border: transparent;
     box-shadow: 0 0 10px #449cd5;
     border-radius: 10px;
-    z-index: 1000;
+    z-index: 1;
     font-family: system-ui;
     color: white;
 }
@@ -153,6 +346,7 @@ button:active {
     bottom: 0;
     margin: 0.5rem;
     padding: 8px 8px;
+    border-radius: 10px;
 }
   
 .plyr {
@@ -182,8 +376,8 @@ button:active {
 
 .suggestions-title {
     position: absolute;
-    top: 0;
-    left: 20px;
+    left: 30px;
+    top: 15px;
     color: white;
     font-family: 'Montserrat';
     font-weight: bold;
@@ -211,6 +405,7 @@ button:active {
 
 .suggestion-img {
     height: 12rem;
+    margin: 10px;
     border-radius: 10px;
     box-shadow: 1px 2px 11px 0 #0000007d;
     opacity: .8;
