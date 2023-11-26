@@ -132,7 +132,7 @@ button:active {
 
 #anime-info {
     position: absolute;
-    top: 90px;
+    top: 150px;
     right: 30px;
     background-color: #728197;
     padding: 1rem;
@@ -177,6 +177,31 @@ button:active {
 }
 
 #anime-history:active {
+    transform: scale(0.95);
+}
+
+#anime-share {
+    position: absolute;
+    top: 90px;
+    right: 30px;
+    background-color: #728197;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    opacity: .8;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+}
+
+#anime-share:active {
     transform: scale(0.95);
 }
 
@@ -666,6 +691,15 @@ button:active {
 @media only screen and (max-width: 450px) {
     .plyr {
         margin: 0;
+    }
+
+    .title-img {
+        width: 15rem;
+    }
+
+    .credits {
+        bottom: 50px;
+        left: 76px;
     }
 
     .suggestions {

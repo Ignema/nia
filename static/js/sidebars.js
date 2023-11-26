@@ -63,3 +63,17 @@ for(let item of document.querySelectorAll(".history-item")) {
         window.location.href = `?q=${q}&t=${t}`
     })
 }
+
+// anime share
+document.getElementById("anime-share").addEventListener("click", async () => {
+    try {
+        await navigator.share({
+            title: "Nia",
+            text: `Listen to ${document.title.replace("Nia: Playing", "").replace("✨","").trim()} on Nia!`,
+            url: window.location.href,
+        });
+        console.log("Shared successfully.")
+    } catch (err) {
+        console.error("Error sharing", err);
+    }
+});
