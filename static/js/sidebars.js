@@ -52,16 +52,14 @@ historyInfo.addEventListener("click", () => {
 })
 
 const cachedHistory = localStorage.getItem("HISTORY")
-if(cachedHistory!=null) history.innerHTML = cachedHistory
+if(cachedHistory!=null) {
+    history.innerHTML = cachedHistory
+    setupHistoryListeners()
+}
+
 for(let item of document.querySelectorAll(".history-item")) {
     item.addEventListener("click", () => {
         const [q,t] = item.querySelector("p:nth-child(2)").innerText.split(/\s*-\s*/)
         window.location.href = `?q=${q}&t=${t}`
-    })
-}
-for(let item of document.querySelectorAll(".history-del")) {
-    item.addEventListener("click", (e) => {
-        history.innerHTML = history.innerHTML.replace(/(\s+|\n)/g, " ").replace(e.target.parentNode.outerHTML,"")
-        localStorage.setItem("HISTORY",history.innerHTML)
     })
 }

@@ -15,11 +15,11 @@ body {
   
 ::-webkit-scrollbar-track {
     background: transparent;
-    height: 30%;
+    margin: 1rem 0;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #fafafa;
+    background: #f9f9f969;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -32,6 +32,33 @@ main {
     justify-content: flex-start;
     align-items: center;
 }
+
+.plus i {
+    font-size: 25px;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    background-color: #5784a173;
+    color: #fff;
+  }
+  
+button:hover {
+    background-color: #449cd5;
+}
+
+button:active {
+    background-color: #21618c;
+}  
 
 #sidebar, #history {
     display: none;
@@ -52,6 +79,7 @@ main {
 
 #history {
     width: 25rem;
+    overflow-y: initial;
 }
 
 #sidebar-close, #history-close {
@@ -91,11 +119,16 @@ main {
     text-align: center;
 }
 
+#sidebar-season {
+    font-family: system-ui;
+    color: rgb(189, 189, 189);
+}
+
 #sidebar-synopsis {
     color: #c1c8d1;
     font-size: 15px;
     font-family: system-ui;
-    margin: 1rem;
+    margin: 3rem 1rem 1rem 1rem;
 }
 
 #anime-info {
@@ -127,7 +160,7 @@ main {
     position: absolute;
     top: 30px;
     right: 30px;
-    background-color: #5784a1;
+    background-color: #728197;
     padding: 1rem;
     border-radius: 50%;
     width: 1rem;
@@ -149,7 +182,11 @@ main {
 }
 
 #history ul {
-    width: 100%;
+    width: 98%;
+    overflow-y: scroll;
+    height: 85%;
+    border: 3px solid #1a1f25;
+    box-shadow: inset 2px 1px 11px 0 #0000007d;
 }
 
 #history li {
@@ -174,14 +211,41 @@ main {
     font-size: 20px;
     opacity: .7;
     cursor: pointer;
-    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.history-del-all {
+    color: #fafafa;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    background-color: #798aa53b;
+    padding: .5rem 2rem;
+    border-radius: 20px;
+    opacity: .8;
+    position: fixed;
+    bottom: 15px;
+    cursor: pointer;
+    transition: .3s all ease-in-out;
+}
+
+.history-del-all:hover {
+    background-color: #738db7;
+}
+
+.history-del-all:active {
+    transform: scale(.95);
 }
 
 .history-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
 }
 
 .history-item > p:nth-child(1) {
+    font-size: 12px;
+    width: 15rem;
     font-family: Montserrat;
     font-weight: bolder;
     color: white;
@@ -194,11 +258,12 @@ main {
     color: #728197;
     font-size: 10px;
     text-align: center;
+    width: 12rem;
 }
 
 .history-img {
     height: 5rem;
-    border-radius: 0 20px 20px 0;
+    border-radius: 20px 0 0 20px;
 }
 
 .title {
@@ -262,14 +327,15 @@ main {
 }
 
 #dialog {
+    width: max-content;
+    max-width: 50rem;
     position: fixed;
     padding: 30px;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background-color: #497089;
+    background-color: #596885;
     border: transparent;
-    box-shadow: 0 0 10px #449cd5;
     border-radius: 10px;
     z-index: 1;
     font-family: system-ui;
@@ -287,58 +353,78 @@ main {
     display: none; /* Initially hide the backdrop */
   }
 
+#themes-form {
+    display: flex;
+    flex-direction: column;
+}
+
 #themes-form > p {
+    font-size: 2rem;
     font-weight: bold;
-    font-family: system-ui;
+    font-family: 'Montserrat';
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 #themes-container {
     overflow-y: scroll;
+    overflow-x: hidden;
     max-height: 30rem;
+    background-color: #4e5c77;
+    border-radius: 10px;
+}
+
+#themes-container label {
+    display: inline-block;
+    width: 100%;
+    padding: .8rem;
+    cursor: pointer;
+}
+
+#themes-container label:hover {
+    background-color: #37486385;
+}
+
+.theme-label-clicked {
+    background-color: #37486385;
+}
+
+#themes-container input[type="radio"] {
+    display: none;
 }
 
 #themes-container input {
     margin: 0.5rem 0;
 }
 
-#themes-container::-webkit-scrollbar {
-    width: 3px;
-}
-  
-#themes-container::-webkit-scrollbar-track {
-    background: transparent;
+#themes-container span {
+    font-weight: lighter;
 }
 
-#themes-container::-webkit-scrollbar-thumb {
-    background: #fafafa;
+#themes-container span > strong {
+    color: antiquewhite;
 }
 
-#themes-container::-webkit-scrollbar-thumb:hover {
-    background: rgb(189, 189, 189);
+#form-buttons {
+    display: flex;
+    justify-content: center;
 }
 
-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-    background-color: #5784a173;
-    color: #fff;
-  }
-  
-button:hover {
-    background-color: #449cd5;
+#themes-form button {
+    outline: none;
+    margin: 0 .5rem;
+    border-radius: 10px;
+    background-color: #e4f5ff54;
 }
 
-button:active {
-    background-color: #21618c;
-}  
+#themes-form button:hover {
+    background-color: #e4f5ffa1;
+}
+
+.disabled-dialog-submit, .disabled-dialog-submit:hover {
+    background-color: #1a1f25 !important;
+    cursor: not-allowed;
+}
 
 .refresh {
     position: absolute;
@@ -543,6 +629,15 @@ button:active {
     .suggestion-img {
         height: 20rem;
     }
+    
+    #dialog {
+        max-width: 18rem;
+    }
+
+    #themes-container strong {
+        display: block;
+        text-wrap: balance;
+    }
 }
 
 @media only screen and (max-width: 450px) {
@@ -561,5 +656,9 @@ button:active {
 
     .refresh {
         bottom: 3px;
+    }
+
+    #dialog {
+        max-width: 15rem;
     }
 }

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="static/css/style.css">
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
     <script src="https://unpkg.com/plyr@3"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="static/js/util.js"></script>
     <script defer src="static/js/themes.js"></script>
     <script defer src="static/js/jikan.js"></script>
@@ -32,6 +33,7 @@
       <hr/>
       <img id="sidebar-image" src="" alt="Current Anime Poster">
       <p id="sidebar-anime"></p> 
+      <p id="sidebar-season"></p> 
       <p id="sidebar-synopsis"></p>   
     </div>
     <div id="history">
@@ -39,6 +41,7 @@
       <p id="history-title">Previously Watched</p>
       <hr/>
       <ul></ul> 
+      <div class="history-del-all">Clear All</div>
     </div>
     <main>
       <div class="title">
@@ -46,8 +49,12 @@
         <p class="credits">By Yasser Douslimi</p>
       </div>
       <div class="plus">
-        <div id="anime-info">i</div>
-        <div id="anime-history">h</div>
+        <div id="anime-info">
+          <i class="fa-solid fa-circle-info"></i>
+        </div>
+        <div id="anime-history">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
       </div>
       <div class="controls"> <!-- Search elements -->
         <input id="anime-search" aria-label="anime-search" placeholder="Type an anime title to start searching..." type="text">
@@ -77,11 +84,13 @@
       <div id="dialog-container">
         <dialog id="dialog">
           <form id="themes-form">
-            <p>Choose a theme:</p>
+            <p>Select Theme</p>
             <div id="themes-container"></div>
             <br>
-            <button type="submit">Apply</button>
-            <button type="button" onclick="closeDialog()">Cancel</button>
+            <div id="form-buttons">
+              <button class="disabled-dialog-submit" type="submit" disabled>Apply</button>
+              <button type="button" onclick="closeDialog()">Cancel</button>
+            </div>
           </form>
         </dialog>
         <div id="dialog-backdrop"></div>
