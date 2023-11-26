@@ -78,7 +78,6 @@ button:active {
 }
 
 #history {
-    width: 25rem;
     overflow-y: initial;
 }
 
@@ -329,6 +328,7 @@ button:active {
 #dialog {
     width: max-content;
     max-width: 50rem;
+    min-width: 30rem;
     position: fixed;
     padding: 30px;
     top: 50%;
@@ -403,6 +403,18 @@ button:active {
 
 #themes-container span > strong {
     color: antiquewhite;
+}
+
+#themes-container .tip {
+    white-space: nowrap;
+    font-size: 12px;
+    background-color: #728197;
+    color: white;
+    padding: .2rem .5rem;
+    border-radius: 20px;
+    font-family: monospace;
+    margin-right: .2rem;
+    margin-bottom: .2rem;
 }
 
 #form-buttons {
@@ -540,13 +552,15 @@ button:active {
     color: white;
     font-family: 'Montserrat';
     opacity: .85;
+    text-align: center;
 }
 
 .page-interact > p > span {
     display: inline-block;
     font-weight: bold;
     background-color: #232f43;
-    padding: 1rem;
+    padding: .8rem;
+    margin: .3rem;
     border-radius: 16px;
     box-shadow: 2px 3px 13px 0px #23282f1c;
 }
@@ -632,11 +646,20 @@ button:active {
     
     #dialog {
         max-width: 18rem;
+        min-width: initial;
+    }
+
+    #themes-container {
+        overflow-x: scroll;
     }
 
     #themes-container strong {
         display: block;
         text-wrap: balance;
+    }
+
+    .page-interact > p {
+        font-size: 12px;
     }
 }
 

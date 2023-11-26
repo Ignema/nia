@@ -49,7 +49,7 @@ if(params.has("q")) {
             const p = document.querySelector(`.page-interact > p`)
             p.innerHTML = `Loading...`
             interact.style.display = "flex"
-            setTimeout(() => p.innerHTML = `Click anywhere to play <span>${params.get("q")}</span>`, 2000)
+            setTimeout(() => p.innerHTML = `Click anywhere to play <span>${document.title.replace("Nia: Playing", "").replace("✨","").trim()}</span>`, 2000)
             interact.addEventListener("click", () => {
                 interact.style.animation = "fade-out 1s forwards";
                 setTimeout(() => interact.style.display = "none", 1000)

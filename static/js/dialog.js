@@ -41,9 +41,51 @@ const openDialog = (anime) => {
                 radio.name = 'choice'
                 radio.value = [index, JSON.stringify(show), video.link, theme["slug"]].join(seperator)
                 const title = document.createElement('span')
-                title.innerHTML = (` <strong>${show["name"]} ${theme["slug"]}:</strong> ${theme["song"]["title"]} (${video["resolution"]}p)${video["lyrics"]=="true"?" (lyrics)":""}`)
+                title.innerHTML = (` <strong>${show["name"]} ${theme["slug"]}:</strong> ${theme["song"]["title"]}`)
+                const season = document.createElement('span')
+                season.innerHTML = (`${show.season} ${show.year}`)
+                season.classList.add("tip")
+                const resolution = document.createElement('span')
+                resolution.innerHTML = (`${video["resolution"]}p`)
+                resolution.classList.add("tip")
                 label.appendChild(radio)
                 label.appendChild(title)
+                label.appendChild(document.createElement("br"))
+                label.appendChild(season)
+                label.appendChild(resolution)
+                if(!!video["lyrics"]) {
+                    const lyrics = document.createElement('span')
+                    lyrics.innerHTML = (`lyrics`)
+                    lyrics.classList.add("tip")
+                    label.appendChild(lyrics)
+                }
+                if(!!video["nc"]) {
+                    const nc = document.createElement('span')
+                    nc.innerHTML = (`creditless`)
+                    nc.classList.add("tip")
+                    label.appendChild(nc)
+                }
+                if(!!theme["animethemeentries"][0]["spoiler"]) {
+                    const spoiler = document.createElement('span')
+                    spoiler.innerHTML = (`spoiler`)
+                    spoiler.classList.add("tip")
+                    spoiler.style.backgroundColor = "#bb6262"
+                    label.appendChild(spoiler)
+                }
+                if(!!theme["animethemeentries"][0]["nsfw"]) {
+                    const nsfw = document.createElement('span')
+                    nsfw.innerHTML = (`nsfw`)
+                    nsfw.classList.add("tip")
+                    nsfw.style.backgroundColor = "#bb6262"
+                    label.appendChild(nsfw)
+                }
+                if(!!video["uncen"]) {
+                    const uncen = document.createElement('span')
+                    uncen.innerHTML = (`uncen`)
+                    uncen.classList.add("tip")
+                    uncen.style.backgroundColor = "#bb6262"
+                    label.appendChild(uncen)
+                }
                 themes.appendChild(label)
                 themes.appendChild(document.createElement('br'))
                 index+=1
@@ -119,6 +161,9 @@ const submitForm = async e => {
         })
     }
     setupHistoryListeners()
+
+    // Update page title
+    document.title = `Nia: Playing ${anime.name} ${type} ✨`
 
     // Closing dialog
     closeDialog();
