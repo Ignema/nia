@@ -71,9 +71,6 @@ button:active {
     z-index: 100;
     animation: slideRight .5s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: scroll;
-}
-
-#sidebar {
     width: 20rem;
 }
 
