@@ -716,4 +716,16 @@ button:active {
     #dialog {
         max-width: 15rem;
     }
+
+    #history {
+        width: unset;
+    ]
+
+    .history-item > p:nth-child(1) {
+        width: unset;
+    }
+
+    .history-item > p:nth-child(2) {
+        width: 10rem;
+    }
 }
