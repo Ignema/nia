@@ -75,6 +75,7 @@ button:active {
 }
 
 #history {
+    width: 25rem;
     overflow-y: initial;
 }
 
