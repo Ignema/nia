@@ -314,6 +314,14 @@ button:active {
 
 .controls {
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#anime-play {
+ margin-left: 1rem;
 }
 
 #anime-search {
@@ -324,7 +332,6 @@ button:active {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     font-family: monospace;
     transition: border-color 0.3s ease-in-out;
-    margin-bottom: 3rem;
 }
   
 #anime-search:focus {
@@ -336,7 +343,7 @@ button:active {
     display: none;
     position: absolute;
     top: 10px;
-    right: 90px;
+    right: 103px;
     font-family: 'Montserrat';
     font-weight: bold;
     color: #a3a0a0;
@@ -443,6 +450,7 @@ button:active {
 #form-buttons {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 #themes-form button {
@@ -719,7 +727,7 @@ button:active {
 
     #history {
         width: unset;
-    ]
+    }
 
     .history-item > p:nth-child(1) {
         width: unset;

@@ -66,14 +66,19 @@ for(let item of document.querySelectorAll(".history-item")) {
 
 // anime share
 document.getElementById("anime-share").addEventListener("click", async () => {
-    try {
-        await navigator.share({
-            title: "Nia",
-            text: `Listen to ${document.title.replace("Nia: Playing", "").replace("✨","").trim()} on Nia!`,
-            url: window.location.href,
-        });
-        console.log("Shared successfully.")
-    } catch (err) {
-        console.error("Error sharing", err);
+    if(navigator.share) {
+        try {
+            await navigator.share({
+                title: "Nia",
+                text: `Listen to ${document.title.replace("Nia: Playing", "").replace("✨","").trim()} on Nia!`,
+                url: window.location.href,
+            });
+            console.log("Shared successfully.")
+        } catch (err) {
+            console.error("Error sharing", err);
+        }
+    } else {
+        navigator.clipboard.writeText(window.location.href)
+        alert("Copied link to clipboard!")
     }
 });
