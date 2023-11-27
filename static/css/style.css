@@ -295,6 +295,7 @@ button:active {
 
 .title-img {
     width: 10rem;
+    cursor: pointer;
 }
 
 .credits {
